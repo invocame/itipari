@@ -65,7 +65,7 @@
     <p>Dall'Hotel Acadia, 9° arrondissement — con metro, spostamenti e tempi</p>
     <div class="date-badge">DOM 5 → GIO 9 LUGLIO</div>
   </div>
-  <div class="closures-box"><b>Chiusure incastrate:</b> Lun → Bar à Bulles + Le Bon Bock chiusi · Mar → Louvre + Orangerie + Le Bon Bock chiusi · Mer → TUTTO APERTO</div>
+  <div class="closures-box"><b>Chiusure incastrate:</b> Lun → Bar à Bulles + Le Bon Bock chiusi · Mar → Louvre + Orangerie + Le Bon Bock chiusi · <b style="color:var(--day1)">Le Bon Bock spostato a domenica sera!</b></div>
 
   <!-- DOM 5 -->
   <div class="day-section">
@@ -74,8 +74,9 @@
       <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.8732561,2.3437067,16,'hotel')"><div class="time" style="color:var(--sun)">16:00</div><div class="name">Check-in Hotel Acadia</div><div class="detail">Sistematevi, riposatevi. Caffè e dolci gratis in lobby dalle 14.</div></div>
       <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">8 min a piedi su <b>Rue de la Victoire</b> verso ovest</div></div>
       <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.8719697,2.3316014,17,'opera_ext')"><div class="time" style="color:var(--sun)">18:00</div><div class="name">Passeggiata serale — Opéra (esterno)</div><div class="detail">Facciata illuminata, Place de l'Opéra. Poi Grands Boulevards, Passage des Panoramas.</div></div>
-      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">5 min a piedi verso est su <b>Boulevard des Italiens</b></div></div>
-      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.8712,2.3423,16,'boulevards')"><div class="time" style="color:var(--sun)">19:30</div><div class="name">Cena nel quartiere</div><div class="detail">Tanti ristoranti su Rue du Faubourg Montmartre e Grands Boulevards.</div></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Da Place de l'Opéra: <span class="lb m2">M2</span> <b>Opéra</b> dir. Porte Dauphine → <b>Anvers</b> (3 fermate) · Uscita Sacré-Cœur · 5 min a piedi su Rue Dancourt · ~15 min tot</div></div>
+      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.882807,2.3419587,17,'bonbock')"><div class="time" style="color:var(--sun)">19:30</div><div class="name">Le Bon Bock (prima cena parigina!)</div><div class="detail">Il più antico ristorante di Montmartre. Petto d'anatra, cosce di rana, musica vintage. 2 Rue Dancourt.</div><span class="ok">✓ APERTO domenica 12:00-23:30</span></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">Rientro: 12 min a piedi in discesa su <b>Rue des Martyrs</b> → hotel · Oppure taxi ~€8</div></div>
     </div>
   </div>
 
@@ -119,15 +120,15 @@
 
   <!-- MER 8 -->
   <div class="day-section">
-    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--day3)"></span>Mer 8 Luglio — Louvre & Orangerie<span class="day-subtitle">giornata piena</span><span class="chevron">▼</span></div>
+    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--day3)"></span>Mer 8 Luglio — Louvre, Orangerie & Célestin<span class="day-subtitle">giornata piena</span><span class="chevron">▼</span></div>
     <div class="stops-container">
       <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Dall'hotel: <span class="lb m7">M7</span> <b>Cadet</b> → <b>Palais Royal-Musée du Louvre</b> (4 fermate, diretto!) · Uscita Musée du Louvre · ~10 min</div></div>
-      <div class="stop-card" style="border-left-color:var(--day3)" onclick="flyTo(48.8606111,2.337644,16,'louvre')"><div class="time" style="color:var(--day3)">9:30</div><div class="name">Louvre (visita mirata)</div><div class="detail">Ingresso Carrousel (meno coda). Ala Denon: Gioconda, Nike, Venere di Milo. Il mercoledì apre fino alle 21!</div><span class="ok">✓ APERTO mercoledì 9-21 (serata!)</span></div>
+      <div class="stop-card" style="border-left-color:var(--day3)" onclick="flyTo(48.8606111,2.337644,16,'louvre')"><div class="time" style="color:var(--day3)">9:30</div><div class="name">Louvre (visita mirata)</div><div class="detail">Ingresso Carrousel (meno coda). Ala Denon: Gioconda, Nike, Venere di Milo. ~2.5h per i capolavori principali.</div><span class="ok">✓ APERTO mercoledì 9-21 (serata!)</span></div>
       <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">10 min di passeggiata nel <b>Jardin des Tuileries</b> verso ovest (panchine ovunque per sosta)</div></div>
-      <div class="stop-card" style="border-left-color:var(--day3)" onclick="flyTo(48.8637884,2.3226724,17,'orangerie')"><div class="time" style="color:var(--day3)">14:00</div><div class="name">Musée de l'Orangerie</div><div class="detail">Ninfee di Monet nelle sale ovali. Picasso, Renoir, Modigliani al piano sotto. €12.50 + audio €5.</div><span class="warn">PRENOTAZIONE OBBLIGATORIA — billetterie.musee-orangerie.fr</span></div>
-      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">3 min a piedi → <span class="lb m8">M8</span> <b>Concorde</b> → Barbès-Rochechouart · Cambio <span class="lb m4">M4</span> dir. Clignancourt → <b>Château Rouge</b> · 5 min a piedi su Rue Dancourt · ~25 min</div></div>
-      <div class="stop-card" style="border-left-color:var(--day3)" onclick="flyTo(48.882807,2.3419587,17,'bonbock')"><div class="time" style="color:var(--day3)">19:30</div><div class="name">Le Bon Bock (cena finale!)</div><div class="detail">Il più antico ristorante di Montmartre. Petto d'anatra, cosce di rana, musica vintage.</div><span class="ok">✓ APERTO mercoledì dalle 18:30</span></div>
-      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">Rientro: 12 min a piedi in discesa su <b>Rue des Martyrs</b> fino all'hotel · Oppure taxi ~€8</div></div>
+      <div class="stop-card" style="border-left-color:var(--day3)" onclick="flyTo(48.8637884,2.3226724,17,'orangerie')"><div class="time" style="color:var(--day3)">12:30</div><div class="name">Musée de l'Orangerie</div><div class="detail">Ninfee di Monet nelle sale ovali. Picasso, Renoir, Modigliani al piano sotto. €12.50 + audio €5. ~1h30 di visita.</div><span class="warn">PRENOTAZIONE OBBLIGATORIA — billetterie.musee-orangerie.fr</span></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info"><span class="lb m8">M8</span> <b>Concorde</b> dir. Créteil → <b>Bastille</b> · Cambio <span class="lb m1">M1</span> dir. Vincennes → <b>Saint-Paul</b> · 5 min a piedi su Quai des Célestins · ~18 min tot</div></div>
+      <div class="stop-card" style="border-left-color:var(--day3)" onclick="flyTo(48.8522192,2.3613873,17,'celestin')"><div class="time" style="color:var(--day3)">15:00</div><div class="name">Le Petit Célestin (boeuf bourguignon!)</div><div class="detail">Bistrot francese sul lungosenna. Boeuf bourguignon top! Anche tarte tatin consigliata. Il mercoledì è aperto no-stop 12:00-mezzanotte. 12 Quai des Célestins, 75004.</div><span class="warn">CHIUSO lun-mar · Solo su prenotazione — prenotate!</span></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Rientro: <span class="lb m1">M1</span> <b>Saint-Paul</b> → Châtelet · Cambio <span class="lb m7">M7</span> → <b>Cadet</b> · ~15 min · Oppure passeggiata nel Marais e taxi</div></div>
     </div>
   </div>
 
@@ -150,6 +151,7 @@
     <a href="https://visites.operadeparis.fr" target="_blank">4. Opéra Garnier → operadeparis.fr</a>
     <a href="https://resa.notredamedeparis.fr" target="_blank">5. Notre-Dame (gratis) → notredamedeparis.fr</a>
     <a href="https://www.bateaux-mouches.fr" target="_blank">6. Bateaux-Mouches → bateaux-mouches.fr</a>
+    <a href="tel:+33142722081" target="_blank">7. Le Petit Célestin → +33 1 42 72 20 81 (prenotare tavolo!)</a>
   </div>
 </div>
 
@@ -159,7 +161,7 @@
   <div class="legend-item"><div class="legend-dot" style="background:var(--sun)"></div> Dom 5 — Arrivo</div>
   <div class="legend-item"><div class="legend-dot" style="background:var(--day1)"></div> Lun 6 — Eiffel/Senna</div>
   <div class="legend-item"><div class="legend-dot" style="background:var(--day2)"></div> Mar 7 — Opéra/Montmartre</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--day3)"></div> Mer 8 — Louvre/Orangerie</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--day3)"></div> Mer 8 — Louvre/Orangerie/Célestin</div>
   <div class="legend-item"><div class="legend-dot" style="background:var(--thu)"></div> Gio 9 — Partenza</div>
 </div>
 
@@ -172,7 +174,7 @@ const markers={};
 function addPin(id,lat,lng,c,t,p,s){s=s||16;const m=L.marker([lat,lng],{icon:icon(c,s)}).addTo(map).bindPopup(`<b>${t}</b><br>${p}`);markers[id]=m}
 addPin('hotel',48.8732561,2.3437067,'#c084fc','⭐ Hotel Acadia','4 Rue Geoffroy-Marie, 75009<br>Metro: Cadet (L7)',22);
 addPin('opera_ext',48.8719697,2.3316014,'#a78bfa','Dom — Opéra (esterno)','18:00 — Passeggiata serale',14);
-addPin('boulevards',48.8712,2.3423,'#a78bfa','Dom — Grands Boulevards','Cena nel quartiere',14);
+addPin('bonbock',48.882807,2.3419587,'#a78bfa','Dom — Le Bon Bock','19:30 — Prima cena parigina!');
 addPin('eiffel',48.858370,2.2944813,'#53d769','Lun — Tour Eiffel','9:30 — Ascensore, prenotare!');
 addPin('bateaux',48.8640106,2.3059374,'#53d769','Lun — Bateaux-Mouches','12:00 — Crociera 1h10, seduti!');
 addPin('notredame',48.852968,2.3499021,'#53d769','Lun — Notre-Dame','14:00 — Ingresso GRATUITO');
@@ -184,9 +186,9 @@ addPin('tertre',48.88626,2.34073,'#e94560','Mar — Place du Tertre','15:30 — 
 addPin('barabul',48.884562,2.3322182,'#e94560','Mar — Bar à Bulles','18:00 — Rooftop Moulin Rouge');
 addPin('moulin',48.8841232,2.3322519,'#e94560','Mar — Moulin Rouge','19:15 — Foto facciata');
 addPin('cena_mar',48.884,2.333,'#e94560','Mar — Cena Montmartre','19:45 — Alternative a Le Bon Bock',14);
-addPin('louvre',48.8606111,2.337644,'#f0a500','Mer — Louvre','9:30 — Gioconda, Nike, Venere<br>Aperto fino alle 21!');
-addPin('orangerie',48.8637884,2.3226724,'#f0a500','Mer — Orangerie','14:00 — Ninfee di Monet');
-addPin('bonbock',48.882807,2.3419587,'#f0a500','Mer — Le Bon Bock','19:30 — Cena finale!');
+addPin('louvre',48.8606111,2.337644,'#f0a500','Mer — Louvre','9:30 — Gioconda, Nike, Venere');
+addPin('celestin',48.8522192,2.3613873,'#f0a500','Mer — Le Petit Célestin','15:00 — Boeuf bourguignon!');
+addPin('orangerie',48.8637884,2.3226724,'#f0a500','Mer — Orangerie','12:30 — Ninfee di Monet');
 addPin('marais',48.8556,2.3614,'#94a3b8','Gio — Le Marais','10:00 — Place des Vosges, falafel');
 addPin('gare',48.8443,2.3733,'#94a3b8','Gio — Gare de Lyon','13:00 — Pranzo + treno ore 15',18);
 function flyTo(lat,lng,z,id){map.flyTo([lat,lng],z,{duration:1.2});if(markers[id])setTimeout(()=>markers[id].openPopup(),600)}
