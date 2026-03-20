@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parigi 5-9 Luglio 2026 — Mappa Interattiva</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#1a1a2e;--sidebar:#16213e;--sun:#a78bfa;--day1:#53d769;--day2:#e94560;--day3:#f0a500;--thu:#94a3b8;--hotel:#c084fc;--text:#eee;--muted:#94a3b8;--accent:#e94560}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);display:flex;height:100vh;overflow:hidden}
+  .sidebar{width:420px;min-width:420px;height:100vh;overflow-y:auto;background:var(--sidebar);border-right:1px solid rgba(255,255,255,0.06);z-index:1000;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.15) transparent}
+  .sidebar::-webkit-scrollbar{width:6px}.sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:3px}
+  .sidebar-header{position:sticky;top:0;background:linear-gradient(135deg,var(--bg),var(--sidebar));padding:24px 20px 18px;border-bottom:1px solid rgba(255,255,255,0.06);z-index:10}
+  .sidebar-header h1{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;background:linear-gradient(135deg,#fff 0%,#f0a500 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2;margin-bottom:4px}
+  .sidebar-header p{font-size:12px;color:var(--muted);line-height:1.4}
+  .date-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 8px;border-radius:5px;margin-top:6px;background:rgba(240,165,0,0.15);color:#f0a500;letter-spacing:0.3px}
+  .day-section{padding:14px 18px;border-bottom:1px solid rgba(255,255,255,0.04)}
+  .day-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;display:flex;align-items:center;gap:9px;margin-bottom:12px;cursor:pointer;user-select:none;transition:opacity 0.2s}
+  .day-title:hover{opacity:0.8}
+  .day-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+  .day-title .chevron{margin-left:auto;font-size:13px;transition:transform 0.3s;color:var(--muted)}
+  .day-title.collapsed .chevron{transform:rotate(-90deg)}
+  .day-subtitle{font-size:11px;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400;margin-left:auto;margin-right:24px}
+  .stop-card{background:rgba(255,255,255,0.04);border-radius:10px;padding:11px 13px;border-left:3px solid transparent;cursor:pointer;transition:background 0.2s,transform 0.15s}
+  .stop-card:hover{background:rgba(255,255,255,0.08);transform:translateX(3px)}
+  .stop-card .time{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:2px}
+  .stop-card .name{font-size:13.5px;font-weight:600;margin-bottom:3px}
+  .stop-card .detail{font-size:11.5px;color:var(--muted);line-height:1.5}
+  .stop-card .warn{color:var(--accent);font-weight:600;font-size:10.5px;display:block;margin-top:3px}
+  .stop-card .ok{color:var(--day1);font-weight:600;font-size:10.5px;display:block;margin-top:3px}
+  .stops-container{overflow:hidden;transition:max-height 0.4s ease;padding-bottom:8px}
+  .transit{display:flex;align-items:flex-start;gap:8px;padding:5px 0 5px 6px;margin:2px 0;position:relative}
+  .transit::before{content:'';position:absolute;left:16px;top:-2px;bottom:-2px;width:2px;background:linear-gradient(to bottom,rgba(255,255,255,0.1),rgba(255,255,255,0.03))}
+  .transit-icon{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;z-index:1;font-weight:700}
+  .transit-icon.walk{background:rgba(255,255,255,0.08);color:var(--muted)}
+  .transit-icon.metro{background:rgba(125,211,252,0.15);color:#7dd3fc}
+  .transit-info{font-size:10.5px;color:var(--muted);line-height:1.55;flex:1;padding-top:2px}
+  .transit-info b{color:#7dd3fc;font-weight:600}
+  .lb{display:inline-block;padding:1px 5px;border-radius:3px;font-size:9.5px;font-weight:700;margin:0 1px;vertical-align:middle}
+  .m1{background:#FFCE00;color:#000}.m2{background:#003CA6;color:#fff}.m4{background:#C04191;color:#fff}
+  .m7{background:#F59EB5;color:#000}.m8{background:#C9A0DC;color:#000}.m9{background:#D5C900;color:#000}
+  .m12{background:#007852;color:#fff}
+  #map{flex:1;height:100vh}
+  .leaflet-popup-content-wrapper{border-radius:10px!important;box-shadow:0 8px 30px rgba(0,0,0,0.3)!important}
+  .leaflet-popup-content{font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.6;min-width:200px}
+  .leaflet-popup-content b{font-size:14px}
+  .legend{position:fixed;bottom:16px;right:16px;background:rgba(22,33,62,0.95);backdrop-filter:blur(10px);border-radius:12px;padding:12px 16px;z-index:1000;border:1px solid rgba(255,255,255,0.1);font-size:11px}
+  .legend-item{display:flex;align-items:center;gap:7px;margin-bottom:4px;color:#ccc}.legend-item:last-child{margin-bottom:0}
+  .legend-dot{width:9px;height:9px;border-radius:50%}
+  .booking-box{margin:14px 18px 18px;padding:12px;background:linear-gradient(135deg,rgba(233,69,96,0.12),rgba(240,165,0,0.08));border:1px solid rgba(233,69,96,0.2);border-radius:10px}
+  .booking-box h3{font-size:12px;font-weight:700;margin-bottom:6px;color:var(--accent)}
+  .booking-box a{color:#7dd3fc;text-decoration:none;font-size:11.5px;display:block;margin-bottom:3px}.booking-box a:hover{text-decoration:underline}
+  .closures-box{margin:0 18px 6px;padding:10px 12px;background:rgba(233,69,96,0.08);border-radius:8px;font-size:11px;color:var(--muted);line-height:1.6}.closures-box b{color:var(--accent)}
+  @media(max-width:768px){body{flex-direction:column}.sidebar{width:100%;min-width:unset;height:50vh}#map{height:50vh}.legend{bottom:8px;right:8px;font-size:10px;padding:8px 12px}}
+</style>
+</head>
+<body>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h1>Parigi — Luglio 2026</h1>
+    <p>Dall'Hotel Acadia, 9° arrondissement — con metro, spostamenti e tempi</p>
+    <div class="date-badge">DOM 5 → GIO 9 LUGLIO</div>
+  </div>
+  <div class="closures-box"><b>Chiusure incastrate:</b> Lun → Bar à Bulles + Le Bon Bock chiusi · Mar → Louvre + Orangerie + Le Bon Bock chiusi · Mer → TUTTO APERTO</div>
+
+  <!-- DOM 5 -->
+  <div class="day-section">
+    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--sun)"></span>Dom 5 Luglio — Arrivo<span class="day-subtitle">dalle 16</span><span class="chevron">▼</span></div>
+    <div class="stops-container">
+      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.8732561,2.3437067,16,'hotel')"><div class="time" style="color:var(--sun)">16:00</div><div class="name">Check-in Hotel Acadia</div><div class="detail">Sistematevi, riposatevi. Caffè e dolci gratis in lobby dalle 14.</div></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">8 min a piedi su <b>Rue de la Victoire</b> verso ovest</div></div>
+      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.8719697,2.3316014,17,'opera_ext')"><div class="time" style="color:var(--sun)">18:00</div><div class="name">Passeggiata serale — Opéra (esterno)</div><div class="detail">Facciata illuminata, Place de l'Opéra. Poi Grands Boulevards, Passage des Panoramas.</div></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">5 min a piedi verso est su <b>Boulevard des Italiens</b></div></div>
+      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.8712,2.3423,16,'boulevards')"><div class="time" style="color:var(--sun)">19:30</div><div class="name">Cena nel quartiere</div><div class="detail">Tanti ristoranti su Rue du Faubourg Montmartre e Grands Boulevards.</div></div>
+    </div>
+  </div>
+
+  <!-- LUN 6 -->
+  <div class="day-section">
+    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--day1)"></span>Lun 6 Luglio — Tour Eiffel & Senna<span class="day-subtitle">giornata piena</span><span class="chevron">▼</span></div>
+    <div class="stops-container">
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Dall'hotel: <span class="lb m7">M7</span> <b>Cadet</b> → Opéra · Cambio <span class="lb m8">M8</span> dir. Balard → <b>École Militaire</b> · Uscita Av. de la Bourdonnais · ~20 min tot</div></div>
+      <div class="stop-card" style="border-left-color:var(--day1)" onclick="flyTo(48.858370,2.2944813,16,'eiffel')"><div class="time" style="color:var(--day1)">9:30</div><div class="name">Tour Eiffel</div><div class="detail">Tutto in ascensore. 2° piano ~€29, cima ~€37. Prenotare 60gg prima! Al 1° piano: ristorante e panchine.</div></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">5 min a piedi verso est lungo la Senna → <b>Pont de l'Alma</b>, Port de la Conférence</div></div>
+      <div class="stop-card" style="border-left-color:var(--day1)" onclick="flyTo(48.8640106,2.3059374,16,'bateaux')"><div class="time" style="color:var(--day1)">12:00</div><div class="name">Bateaux-Mouches (crociera)</div><div class="detail">1h10 SEDUTI! ~€17-18. Torre, ponti, Louvre, Notre-Dame dalla Senna. Audio italiano.</div></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Dal molo: <span class="lb m9">M9</span> <b>Alma-Marceau</b> → Franklin-Roosevelt · Cambio <span class="lb m1">M1</span> → Châtelet · Cambio <span class="lb m4">M4</span> dir. Montrouge → <b>Cité</b> · Uscita Parvis Notre-Dame · ~20 min</div></div>
+      <div class="stop-card" style="border-left-color:var(--day1)" onclick="flyTo(48.852968,2.3499021,17,'notredame')"><div class="time" style="color:var(--day1)">14:00</div><div class="name">Notre-Dame de Paris</div><div class="detail">GRATUITO! Riaperta dopo il restauro. Vetrate, rosoni, navata gotica luminosissima.</div></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info"><span class="lb m4">M4</span> <b>Cité</b> → Châtelet · Cambio <span class="lb m1">M1</span> dir. La Défense → <b>Charles de Gaulle-Étoile</b> · Uscita Champs-Élysées · ~20 min</div></div>
+      <div class="stop-card" style="border-left-color:var(--day1)" onclick="flyTo(48.8737917,2.2950275,16,'arc')"><div class="time" style="color:var(--day1)">15:45</div><div class="name">Arc de Triomphe & Champs-Élysées</div><div class="detail">Vista dall'esterno (284 gradini, no ascensore per salire). Passeggiata Champs-Élysées in discesa.</div></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Rientro: <span class="lb m1">M1</span> <b>George V</b> o <b>Franklin-Roosevelt</b> → Châtelet · Cambio <span class="lb m7">M7</span> → <b>Cadet</b> · ~20 min · Oppure taxi ~€12-15</div></div>
+    </div>
+  </div>
+
+  <!-- MAR 7 -->
+  <div class="day-section">
+    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--day2)"></span>Mar 7 Luglio — Opéra & Montmartre<span class="day-subtitle">giornata piena</span><span class="chevron">▼</span></div>
+    <div class="stops-container">
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">Dall'hotel: 8 min a piedi su <b>Rue de la Victoire</b> → Place de l'Opéra</div></div>
+      <div class="stop-card" style="border-left-color:var(--day2)" onclick="flyTo(48.8719697,2.3316014,17,'opera')"><div class="time" style="color:var(--day2)">10:00</div><div class="name">Opéra Garnier (visita interna)</div><div class="detail">Self-guided ~€15. Audioguida italiano gratis su app. Scalone, Chagall, Grand Foyer.</div></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">5 min a piedi su <b>Boulevard Haussmann</b> verso est</div></div>
+      <div class="stop-card" style="border-left-color:var(--day2)" onclick="flyTo(48.873622,2.3321099,17,'galeries')"><div class="time" style="color:var(--day2)">11:45</div><div class="name">Galeries Lafayette (terrazza)</div><div class="detail">Terrazza GRATUITA, ascensore fino in cima. Cupola Art Nouveau. Pranzo qui.</div></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Pausa in hotel, poi: <span class="lb m7">M7</span> <b>Cadet</b> → Opéra · Cambio <span class="lb m2">M2</span> dir. Porte Dauphine → <b>Anvers</b> · Uscita Sacré-Cœur · Poi <b>funicolare</b> (biglietto metro) · ~15 min</div></div>
+      <div class="stop-card" style="border-left-color:var(--day2)" onclick="flyTo(48.886705,2.3431043,17,'sacrecoeur')"><div class="time" style="color:var(--day2)">14:30</div><div class="name">Sacré-Cœur</div><div class="detail">FUNICOLARE per salire. Basilica gratuita, panorama dal sagrato.</div></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">3 min a piedi in piano verso <b>Place du Tertre</b></div></div>
+      <div class="stop-card" style="border-left-color:var(--day2)" onclick="flyTo(48.88626,2.34073,17,'tertre')"><div class="time" style="color:var(--day2)">15:30</div><div class="name">Place du Tertre & Montmartre</div><div class="detail">Pittori, Vigneto, Maison Rose. Tutto in piano o lieve discesa.</div></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">10 min a piedi in discesa su <b>Rue Lepic</b> → Cité Véron (dietro il Moulin Rouge)</div></div>
+      <div class="stop-card" style="border-left-color:var(--day2)" onclick="flyTo(48.884562,2.3322182,18,'barabul')"><div class="time" style="color:var(--day2)">18:00</div><div class="name">Bar à Bulles (rooftop Moulin Rouge)</div><div class="detail">Cocktail/thé freddo con vista sulla pala rossa del Moulin Rouge.</div><span class="ok">✓ APERTO martedì dalle 18:00</span></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">Uscite e siete <b>di fronte</b> al Moulin Rouge su Boulevard de Clichy</div></div>
+      <div class="stop-card" style="border-left-color:var(--day2)" onclick="flyTo(48.8841232,2.3322519,18,'moulin')"><div class="time" style="color:var(--day2)">19:15</div><div class="name">Moulin Rouge (esterno)</div><div class="detail">Foto facciata illuminata.</div></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">5 min a piedi. Ristoranti su <b>Rue Lepic</b> e <b>Rue des Abbesses</b></div></div>
+      <div class="stop-card" style="border-left-color:var(--day2)" onclick="flyTo(48.884,2.333,17,'cena_mar')"><div class="time" style="color:var(--day2)">19:45</div><div class="name">Cena a Montmartre</div><div class="detail">Le Bon Bock chiuso martedì. Alternative: Le Relais Gascon, Chez Plumeau, bistrot Rue Lepic.</div><span class="warn">Le Bon Bock CHIUSO martedì</span></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Rientro: <span class="lb m12">M12</span> <b>Abbesses</b> → Pigalle · Cambio <span class="lb m2">M2</span> → Anvers → a piedi 10 min in discesa · Oppure taxi ~€10</div></div>
+    </div>
+  </div>
+
+  <!-- MER 8 -->
+  <div class="day-section">
+    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--day3)"></span>Mer 8 Luglio — Louvre & Orangerie<span class="day-subtitle">giornata piena</span><span class="chevron">▼</span></div>
+    <div class="stops-container">
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Dall'hotel: <span class="lb m7">M7</span> <b>Cadet</b> → <b>Palais Royal-Musée du Louvre</b> (4 fermate, diretto!) · Uscita Musée du Louvre · ~10 min</div></div>
+      <div class="stop-card" style="border-left-color:var(--day3)" onclick="flyTo(48.8606111,2.337644,16,'louvre')"><div class="time" style="color:var(--day3)">9:30</div><div class="name">Louvre (visita mirata)</div><div class="detail">Ingresso Carrousel (meno coda). Ala Denon: Gioconda, Nike, Venere di Milo. Il mercoledì apre fino alle 21!</div><span class="ok">✓ APERTO mercoledì 9-21 (serata!)</span></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">10 min di passeggiata nel <b>Jardin des Tuileries</b> verso ovest (panchine ovunque per sosta)</div></div>
+      <div class="stop-card" style="border-left-color:var(--day3)" onclick="flyTo(48.8637884,2.3226724,17,'orangerie')"><div class="time" style="color:var(--day3)">14:00</div><div class="name">Musée de l'Orangerie</div><div class="detail">Ninfee di Monet nelle sale ovali. Picasso, Renoir, Modigliani al piano sotto. €12.50 + audio €5.</div><span class="warn">PRENOTAZIONE OBBLIGATORIA — billetterie.musee-orangerie.fr</span></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">3 min a piedi → <span class="lb m8">M8</span> <b>Concorde</b> → Barbès-Rochechouart · Cambio <span class="lb m4">M4</span> dir. Clignancourt → <b>Château Rouge</b> · 5 min a piedi su Rue Dancourt · ~25 min</div></div>
+      <div class="stop-card" style="border-left-color:var(--day3)" onclick="flyTo(48.882807,2.3419587,17,'bonbock')"><div class="time" style="color:var(--day3)">19:30</div><div class="name">Le Bon Bock (cena finale!)</div><div class="detail">Il più antico ristorante di Montmartre. Petto d'anatra, cosce di rana, musica vintage.</div><span class="ok">✓ APERTO mercoledì dalle 18:30</span></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">Rientro: 12 min a piedi in discesa su <b>Rue des Martyrs</b> fino all'hotel · Oppure taxi ~€8</div></div>
+    </div>
+  </div>
+
+  <!-- GIO 9 -->
+  <div class="day-section">
+    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--thu)"></span>Gio 9 Luglio — Partenza<span class="day-subtitle">treno ore 15</span><span class="chevron">▼</span></div>
+    <div class="stops-container">
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Dall'hotel (con bagagli): <span class="lb m7">M7</span> <b>Cadet</b> → Châtelet · Cambio <span class="lb m1">M1</span> dir. Vincennes → <b>Saint-Paul</b> · ~15 min · Lasciate i bagagli in consigne alla Gare de Lyon prima (~€10)</div></div>
+      <div class="stop-card" style="border-left-color:var(--thu)" onclick="flyTo(48.8556,2.3614,16,'marais')"><div class="time" style="color:var(--thu)">10:00</div><div class="name">Mattinata nel Marais</div><div class="detail">Place des Vosges, Rue des Rosiers (falafel da L'As du Fallafel!), boutique vintage.</div></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info"><span class="lb m1">M1</span> <b>Saint-Paul</b> → <b>Gare de Lyon</b> (3 fermate, 7 min) · Uscita Gare SNCF Grandes Lignes</div></div>
+      <div class="stop-card" style="border-left-color:var(--thu)" onclick="flyTo(48.8443,2.3733,16,'gare')"><div class="time" style="color:var(--thu)">13:00</div><div class="name">Pranzo & Gare de Lyon</div><div class="detail">Pranzo al Le Train Bleu (ristorante storico Belle Époque nella stazione!). Arrivate 45 min prima del treno.</div></div>
+    </div>
+  </div>
+
+  <div class="booking-box">
+    <h3>DA PRENOTARE SUBITO (luglio = alta stagione!)</h3>
+    <a href="https://toureiffel.paris" target="_blank">1. Tour Eiffel → toureiffel.paris (60gg prima!)</a>
+    <a href="https://ticket.louvre.fr" target="_blank">2. Louvre → ticket.louvre.fr</a>
+    <a href="https://billetterie.musee-orangerie.fr" target="_blank">3. Orangerie → musee-orangerie.fr (obbligatorio)</a>
+    <a href="https://visites.operadeparis.fr" target="_blank">4. Opéra Garnier → operadeparis.fr</a>
+    <a href="https://resa.notredamedeparis.fr" target="_blank">5. Notre-Dame (gratis) → notredamedeparis.fr</a>
+    <a href="https://www.bateaux-mouches.fr" target="_blank">6. Bateaux-Mouches → bateaux-mouches.fr</a>
+  </div>
+</div>
+
+<div id="map"></div>
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--hotel)"></div> Hotel Acadia</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--sun)"></div> Dom 5 — Arrivo</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--day1)"></div> Lun 6 — Eiffel/Senna</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--day2)"></div> Mar 7 — Opéra/Montmartre</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--day3)"></div> Mer 8 — Louvre/Orangerie</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--thu)"></div> Gio 9 — Partenza</div>
+</div>
+
+<script>
+const map=L.map('map',{zoomControl:false}).setView([48.8650,2.3310],13);
+L.control.zoom({position:'topright'}).addTo(map);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; OSM &copy; CARTO',maxZoom:19}).addTo(map);
+function icon(c,s){return L.divIcon({className:'',html:`<div style="width:${s}px;height:${s}px;background:${c};border:3px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.5)"></div>`,iconSize:[s,s],iconAnchor:[s/2,s/2]})}
+const markers={};
+function addPin(id,lat,lng,c,t,p,s){s=s||16;const m=L.marker([lat,lng],{icon:icon(c,s)}).addTo(map).bindPopup(`<b>${t}</b><br>${p}`);markers[id]=m}
+addPin('hotel',48.8732561,2.3437067,'#c084fc','⭐ Hotel Acadia','4 Rue Geoffroy-Marie, 75009<br>Metro: Cadet (L7)',22);
+addPin('opera_ext',48.8719697,2.3316014,'#a78bfa','Dom — Opéra (esterno)','18:00 — Passeggiata serale',14);
+addPin('boulevards',48.8712,2.3423,'#a78bfa','Dom — Grands Boulevards','Cena nel quartiere',14);
+addPin('eiffel',48.858370,2.2944813,'#53d769','Lun — Tour Eiffel','9:30 — Ascensore, prenotare!');
+addPin('bateaux',48.8640106,2.3059374,'#53d769','Lun — Bateaux-Mouches','12:00 — Crociera 1h10, seduti!');
+addPin('notredame',48.852968,2.3499021,'#53d769','Lun — Notre-Dame','14:00 — Ingresso GRATUITO');
+addPin('arc',48.8737917,2.2950275,'#53d769','Lun — Arc de Triomphe','15:45 — Esterno + Champs-Élysées');
+addPin('opera',48.8719697,2.3316014,'#e94560','Mar — Opéra Garnier','10:00 — Tour €15, audioguida IT');
+addPin('galeries',48.873622,2.3321099,'#e94560','Mar — Galeries Lafayette','11:45 — Terrazza GRATIS');
+addPin('sacrecoeur',48.886705,2.3431043,'#e94560','Mar — Sacré-Cœur','14:30 — Funicolare + basilica');
+addPin('tertre',48.88626,2.34073,'#e94560','Mar — Place du Tertre','15:30 — Pittori, passeggiata');
+addPin('barabul',48.884562,2.3322182,'#e94560','Mar — Bar à Bulles','18:00 — Rooftop Moulin Rouge');
+addPin('moulin',48.8841232,2.3322519,'#e94560','Mar — Moulin Rouge','19:15 — Foto facciata');
+addPin('cena_mar',48.884,2.333,'#e94560','Mar — Cena Montmartre','19:45 — Alternative a Le Bon Bock',14);
+addPin('louvre',48.8606111,2.337644,'#f0a500','Mer — Louvre','9:30 — Gioconda, Nike, Venere<br>Aperto fino alle 21!');
+addPin('orangerie',48.8637884,2.3226724,'#f0a500','Mer — Orangerie','14:00 — Ninfee di Monet');
+addPin('bonbock',48.882807,2.3419587,'#f0a500','Mer — Le Bon Bock','19:30 — Cena finale!');
+addPin('marais',48.8556,2.3614,'#94a3b8','Gio — Le Marais','10:00 — Place des Vosges, falafel');
+addPin('gare',48.8443,2.3733,'#94a3b8','Gio — Gare de Lyon','13:00 — Pranzo + treno ore 15',18);
+function flyTo(lat,lng,z,id){map.flyTo([lat,lng],z,{duration:1.2});if(markers[id])setTimeout(()=>markers[id].openPopup(),600)}
+function toggleDay(el){el.classList.toggle('collapsed');const c=el.nextElementSibling;if(el.classList.contains('collapsed')){c.style.maxHeight=c.scrollHeight+'px';requestAnimationFrame(()=>{c.style.maxHeight='0'})}else{c.style.maxHeight=c.scrollHeight+'px';c.addEventListener('transitionend',()=>{if(!el.classList.contains('collapsed'))c.style.maxHeight='none'},{once:true})}}
+document.querySelectorAll('.stops-container').forEach(c=>{c.style.maxHeight='none'});
+</script>
+</body>
+</html>
