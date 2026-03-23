@@ -71,9 +71,9 @@
   <div class="day-section">
     <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--sun)"></span>Dom 5 Luglio — Arrivo da Orly<span class="day-subtitle">atterraggio 12:10</span><span class="chevron">▼</span></div>
     <div class="stops-container">
-      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.7262,2.3652,12,'orly')"><div class="time" style="color:var(--sun)">12:10</div><div class="name">Atterraggio Orly</div><div class="detail">Sbarco, controlli, bagagli. Calcolate di uscire dall'aeroporto verso le 12:45-13:00.</div></div>
-      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Opzione migliore: <span class="lb" style="background:#67328E;color:#fff">M14</span> <b>Aéroport d'Orly</b> → <b>Châtelet</b> (25 min, diretto, ogni 5 min!) · Cambio <span class="lb m7">M7</span> dir. La Courneuve → <b>Cadet</b> (5 fermate, 10 min) · Biglietto ~€13 · ~40 min totali</div></div>
-      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.872828,2.3433914,17,'monop')"><div class="time" style="color:var(--sun)">13:45</div><div class="name">Monop' — acqua e provviste</div><div class="detail">16 Rue du Faubourg Montmartre — 1 min dall'hotel. Comprate acqua, snack, frutta. Aperto dom 9-21:50.</div></div>
+      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.7262,2.3652,12,'orly')"><div class="time" style="color:var(--sun)">12:10</div><div class="name">Atterraggio Orly</div><div class="detail">Sbarco, controlli, bagagli. Calcolate di uscire dall'aeroporto verso le 12:45. Prendete il taxi dalla fila ufficiale fuori gli arrivi.</div></div>
+      <div class="transit"><div class="transit-icon" style="background:rgba(240,165,0,0.15);color:#f0a500;width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;z-index:1;font-weight:700">🚕</div><div class="transit-info"><b>Taxi</b> dalla fila ufficiale fuori gli arrivi (cartello "Taxi Parisien" sul tetto) · Tariffa fissa <b>€45</b> per Rive Droite, fino a 4 passeggeri con bagagli · ~30 min · Non si lascia mancia</div></div>
+      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.872828,2.3433914,17,'monop')"><div class="time" style="color:var(--sun)">13:30</div><div class="name">Monop' — acqua e provviste</div><div class="detail">16 Rue du Faubourg Montmartre — 1 min dall'hotel. Comprate acqua, snack, frutta. Aperto dom 9-21:50.</div></div>
       <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">Lasciate i bagagli alla <b>reception dell'hotel</b> (chiedete di custodirli fino al check-in). Tempo libero per esplorare il quartiere!</div></div>
       <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.8732561,2.3437067,16,'hotel')"><div class="time" style="color:var(--sun)">15:00</div><div class="name">Check-in Hotel Acadia</div><div class="detail">Check-in dalle 15:00. Sistematevi, doccia, riposatevi un po'. Caffè e dolci gratis in lobby.</div></div>
       <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">8 min a piedi su <b>Rue de la Victoire</b> verso ovest</div></div>
@@ -140,12 +140,14 @@
 
   <!-- GIO 9 -->
   <div class="day-section">
-    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--thu)"></span>Gio 9 Luglio — Partenza<span class="day-subtitle">treno ore 15</span><span class="chevron">▼</span></div>
+    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--thu)"></span>Gio 9 Luglio — Partenza<span class="day-subtitle">Frecciarossa 15:25</span><span class="chevron">▼</span></div>
     <div class="stops-container">
       <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Dall'hotel (con bagagli): <span class="lb m7">M7</span> <b>Cadet</b> → Châtelet · Cambio <span class="lb m1">M1</span> dir. Vincennes → <b>Saint-Paul</b> · ~15 min · Lasciate i bagagli in consigne alla Gare de Lyon prima (~€10)</div></div>
       <div class="stop-card" style="border-left-color:var(--thu)" onclick="flyTo(48.8556,2.3614,16,'marais')"><div class="time" style="color:var(--thu)">10:00</div><div class="name">Mattinata nel Marais</div><div class="detail">Place des Vosges, Rue des Rosiers (falafel da L'As du Fallafel!), boutique vintage.</div></div>
       <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info"><span class="lb m1">M1</span> <b>Saint-Paul</b> → <b>Gare de Lyon</b> (3 fermate, 7 min) · Uscita Gare SNCF Grandes Lignes</div></div>
-      <div class="stop-card" style="border-left-color:var(--thu)" onclick="flyTo(48.8443,2.3733,16,'gare')"><div class="time" style="color:var(--thu)">13:00</div><div class="name">Pranzo & Gare de Lyon</div><div class="detail">Pranzo al Le Train Bleu (ristorante storico Belle Époque nella stazione!). Arrivate 45 min prima del treno.</div></div>
+      <div class="stop-card" style="border-left-color:var(--thu)" onclick="flyTo(48.8443,2.3733,16,'gare')"><div class="time" style="color:var(--thu)">13:00</div><div class="name">Pranzo al Le Train Bleu</div><div class="detail">Ristorante storico Belle Époque dentro la stazione! Soffitti affrescati, cucina francese. Prenotate su letrainbleu.com.</div></div>
+      <div class="transit"><div class="transit-icon" style="background:rgba(233,69,96,0.15);color:var(--accent);width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;z-index:1;font-weight:700">🚄</div><div class="transit-info">Presentatevi al binario <b>~30 min prima</b> della partenza. Gare de Lyon, Hall 1-2 (Grandes Lignes)</div></div>
+      <div class="stop-card" style="border-left-color:var(--accent);background:rgba(233,69,96,0.06)" onclick="flyTo(48.8443,2.3733,16,'gare')"><div class="time" style="color:var(--accent)">15:25</div><div class="name">🚄 Frecciarossa 9287 → Milano Centrale</div><div class="detail">Paris-Gare-de-Lyon 15:25 → Milano Centrale 22:07 · Durata: 6h42 · Buon viaggio!</div></div>
     </div>
   </div>
 
@@ -179,7 +181,7 @@ const markers={};
 function addPin(id,lat,lng,c,t,p,s){s=s||16;const m=L.marker([lat,lng],{icon:icon(c,s)}).addTo(map).bindPopup(`<b>${t}</b><br>${p}`);markers[id]=m}
 addPin('hotel',48.8732561,2.3437067,'#c084fc','⭐ Hotel Acadia','4 Rue Geoffroy-Marie, 75009<br>Metro: Cadet (L7)',22);
 addPin('orly',48.7262,2.3652,'#a78bfa','Dom — Orly','12:10 — Atterraggio',14);
-addPin('monop',48.872828,2.3433914,'#a78bfa','Dom — Monop\'','13:45 — Acqua e provviste',12);
+addPin('monop',48.872828,2.3433914,'#a78bfa','Dom — Monop\'','13:30 — Acqua e provviste',12);
 addPin('opera_ext',48.8719697,2.3316014,'#a78bfa','Dom — Opéra (esterno)','18:00 — Passeggiata serale',14);
 addPin('bonbock',48.882807,2.3419587,'#a78bfa','Dom — Le Bon Bock','19:30 — Prima cena parigina!');
 addPin('eiffel',48.858370,2.2944813,'#53d769','Lun — Tour Eiffel','9:30 — Ascensore, prenotare!');
