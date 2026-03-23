@@ -55,7 +55,24 @@
   .booking-box h3{font-size:12px;font-weight:700;margin-bottom:6px;color:var(--accent)}
   .booking-box a{color:#7dd3fc;text-decoration:none;font-size:11.5px;display:block;margin-bottom:3px}.booking-box a:hover{text-decoration:underline}
   .closures-box{margin:0 18px 6px;padding:10px 12px;background:rgba(233,69,96,0.08);border-radius:8px;font-size:11px;color:var(--muted);line-height:1.6}.closures-box b{color:var(--accent)}
-  @media(max-width:768px){body{flex-direction:column}.sidebar{width:100%;min-width:unset;height:50vh}#map{height:50vh}.legend{bottom:8px;right:8px;font-size:10px;padding:8px 12px}}
+  /* MOBILE MAP LINK */
+  .maps-link{display:none;margin-top:6px}
+  .maps-link a{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:6px;background:rgba(66,133,244,0.15);color:#7dd3fc;text-decoration:none;font-size:11px;font-weight:600;border:1px solid rgba(66,133,244,0.25);transition:background 0.2s}
+  .maps-link a:active{background:rgba(66,133,244,0.3)}
+
+  @media(max-width:768px){
+    body{flex-direction:column;overflow-y:auto;overflow-x:hidden}
+    .sidebar{width:100%;min-width:unset;height:auto;min-height:100vh;border-right:none}
+    #map{display:none!important}
+    .legend{display:none!important}
+    .sidebar-header h1{font-size:22px}
+    .day-title{font-size:14px}
+    .stop-card{padding:12px 14px}
+    .stop-card .name{font-size:14px}
+    .stop-card .detail{font-size:12px}
+    .transit-info{font-size:11px}
+    .maps-link{display:block}
+  }
 </style>
 </head>
 <body>
@@ -73,7 +90,7 @@
     <div class="stops-container">
       <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.7262,2.3652,12,'orly')"><div class="time" style="color:var(--sun)">12:10</div><div class="name">Atterraggio Orly</div><div class="detail">Sbarco, controlli, bagagli. Calcolate di uscire dall'aeroporto verso le 12:45. Prendete il taxi dalla fila ufficiale fuori gli arrivi.</div></div>
       <div class="transit"><div class="transit-icon" style="background:rgba(240,165,0,0.15);color:#f0a500;width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;z-index:1;font-weight:700">🚕</div><div class="transit-info"><b>Taxi</b> dalla fila ufficiale fuori gli arrivi (cartello "Taxi Parisien" sul tetto) · Tariffa fissa <b>€45</b> per Rive Droite, fino a 4 passeggeri con bagagli · ~30 min · Non si lascia mancia</div></div>
-      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.872828,2.3433914,17,'monop')"><div class="time" style="color:var(--sun)">13:30</div><div class="name">Monop' — acqua e provviste</div><div class="detail">16 Rue du Faubourg Montmartre — 1 min dall'hotel. Comprate acqua, snack, frutta. Aperto dom 9-21:50.</div></div>
+      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.872828,2.3433914,17,'monop')" data-maps="https://maps.app.goo.gl/xwntggYaoywWMfVr9"><div class="time" style="color:var(--sun)">13:30</div><div class="name">Monop' — acqua e provviste</div><div class="detail">16 Rue du Faubourg Montmartre — 1 min dall'hotel. Comprate acqua, snack, frutta. Aperto dom 9-21:50.</div></div>
       <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">Lasciate i bagagli alla <b>reception dell'hotel</b> (chiedete di custodirli fino al check-in). Tempo libero per esplorare il quartiere!</div></div>
       <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.8732561,2.3437067,16,'hotel')"><div class="time" style="color:var(--sun)">15:00</div><div class="name">Check-in Hotel Acadia</div><div class="detail">Check-in dalle 15:00. Sistematevi, doccia, riposatevi un po'. Caffè e dolci gratis in lobby.</div></div>
       <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">8 min a piedi su <b>Rue de la Victoire</b> verso ovest</div></div>
@@ -202,9 +219,24 @@ addPin('louvre',48.8606111,2.337644,'#f0a500','Mer — Louvre','9:30 — Giocond
 addPin('celestin',48.8522192,2.3613873,'#f0a500','Mer — Le Petit Célestin','14:00 — Boeuf bourguignon!');
 addPin('marais',48.8556,2.3614,'#94a3b8','Gio — Le Marais','10:00 — Place des Vosges, falafel');
 addPin('gare',48.8443,2.3733,'#94a3b8','Gio — Gare de Lyon','13:00 — Pranzo + treno ore 15',18);
-function flyTo(lat,lng,z,id){map.flyTo([lat,lng],z,{duration:1.2});if(markers[id])setTimeout(()=>markers[id].openPopup(),600)}
+function isMobile(){return window.innerWidth<=768}
+function flyTo(lat,lng,z,id){
+  if(isMobile()) return;
+  map.flyTo([lat,lng],z,{duration:1.2});if(markers[id])setTimeout(()=>markers[id].openPopup(),600)
+}
 function toggleDay(el){el.classList.toggle('collapsed');const c=el.nextElementSibling;if(el.classList.contains('collapsed')){c.style.maxHeight=c.scrollHeight+'px';requestAnimationFrame(()=>{c.style.maxHeight='0'})}else{c.style.maxHeight=c.scrollHeight+'px';c.addEventListener('transitionend',()=>{if(!el.classList.contains('collapsed'))c.style.maxHeight='none'},{once:true})}}
 document.querySelectorAll('.stops-container').forEach(c=>{c.style.maxHeight='none'});
+// Add Google Maps links on mobile using place names or custom links
+document.querySelectorAll('.stop-card[onclick]').forEach(card=>{
+  const custom=card.getAttribute('data-maps');
+  const nameEl=card.querySelector('.name');
+  if(custom||nameEl){
+    const url=custom||`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(nameEl.textContent.replace(/[🚄⭐]/g,'').replace(/\(.*?\)/g,'').trim()+', Paris')}`;
+    const div=document.createElement('div');div.className='maps-link';
+    div.innerHTML=`<a href="${url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">📍 Apri in Google Maps</a>`;
+    card.appendChild(div);
+  }
+});
 </script>
 </body>
 </html>
