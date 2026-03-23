@@ -69,11 +69,13 @@
 
   <!-- DOM 5 -->
   <div class="day-section">
-    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--sun)"></span>Dom 5 Luglio — Arrivo<span class="day-subtitle">dalle 16</span><span class="chevron">▼</span></div>
+    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--sun)"></span>Dom 5 Luglio — Arrivo da Orly<span class="day-subtitle">atterraggio 12:10</span><span class="chevron">▼</span></div>
     <div class="stops-container">
-      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.872828,2.3433914,17,'monop')"><div class="time" style="color:var(--sun)">15:30</div><div class="name">Monop' — acqua e provviste</div><div class="detail">16 Rue du Faubourg Montmartre — 1 min dall'hotel. Comprate acqua e snack prima del check-in. Aperto dom 9-21:50.</div></div>
-      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">1 min a piedi → <b>Hotel Acadia</b> su Rue Geoffroy-Marie</div></div>
-      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.8732561,2.3437067,16,'hotel')"><div class="time" style="color:var(--sun)">16:00</div><div class="name">Check-in Hotel Acadia</div><div class="detail">Sistematevi, riposatevi. Caffè e dolci gratis in lobby dalle 14.</div></div>
+      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.7262,2.3652,12,'orly')"><div class="time" style="color:var(--sun)">12:10</div><div class="name">Atterraggio Orly</div><div class="detail">Sbarco, controlli, bagagli. Calcolate di uscire dall'aeroporto verso le 12:45-13:00.</div></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Opzione migliore: <span class="lb" style="background:#67328E;color:#fff">M14</span> <b>Aéroport d'Orly</b> → <b>Châtelet</b> (25 min, diretto, ogni 5 min!) · Cambio <span class="lb m7">M7</span> dir. La Courneuve → <b>Cadet</b> (5 fermate, 10 min) · Biglietto ~€13 · ~40 min totali</div></div>
+      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.872828,2.3433914,17,'monop')"><div class="time" style="color:var(--sun)">13:45</div><div class="name">Monop' — acqua e provviste</div><div class="detail">16 Rue du Faubourg Montmartre — 1 min dall'hotel. Comprate acqua, snack, frutta. Aperto dom 9-21:50.</div></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">Lasciate i bagagli alla <b>reception dell'hotel</b> (chiedete di custodirli fino al check-in). Tempo libero per esplorare il quartiere!</div></div>
+      <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.8732561,2.3437067,16,'hotel')"><div class="time" style="color:var(--sun)">15:00</div><div class="name">Check-in Hotel Acadia</div><div class="detail">Check-in dalle 15:00. Sistematevi, doccia, riposatevi un po'. Caffè e dolci gratis in lobby.</div></div>
       <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">8 min a piedi su <b>Rue de la Victoire</b> verso ovest</div></div>
       <div class="stop-card" style="border-left-color:var(--sun)" onclick="flyTo(48.8719697,2.3316014,17,'opera_ext')"><div class="time" style="color:var(--sun)">18:00</div><div class="name">Passeggiata serale — Opéra (esterno)</div><div class="detail">Facciata illuminata, Place de l'Opéra. Poi Grands Boulevards, Passage des Panoramas.</div></div>
       <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Da Place de l'Opéra: <span class="lb m2">M2</span> <b>Opéra</b> dir. Porte Dauphine → <b>Anvers</b> (3 fermate) · Uscita Sacré-Cœur · 5 min a piedi su Rue Dancourt · ~15 min tot</div></div>
@@ -161,7 +163,7 @@
 <div id="map"></div>
 <div class="legend">
   <div class="legend-item"><div class="legend-dot" style="background:var(--hotel)"></div> Hotel Acadia</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--sun)"></div> Dom 5 — Arrivo</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--sun)"></div> Dom 5 — Orly/Arrivo</div>
   <div class="legend-item"><div class="legend-dot" style="background:var(--day1)"></div> Lun 6 — Eiffel/Orangerie</div>
   <div class="legend-item"><div class="legend-dot" style="background:var(--day2)"></div> Mar 7 — Opéra/Montmartre</div>
   <div class="legend-item"><div class="legend-dot" style="background:var(--day3)"></div> Mer 8 — Louvre/Célestin</div>
@@ -176,7 +178,8 @@ function icon(c,s){return L.divIcon({className:'',html:`<div style="width:${s}px
 const markers={};
 function addPin(id,lat,lng,c,t,p,s){s=s||16;const m=L.marker([lat,lng],{icon:icon(c,s)}).addTo(map).bindPopup(`<b>${t}</b><br>${p}`);markers[id]=m}
 addPin('hotel',48.8732561,2.3437067,'#c084fc','⭐ Hotel Acadia','4 Rue Geoffroy-Marie, 75009<br>Metro: Cadet (L7)',22);
-addPin('monop',48.872828,2.3433914,'#a78bfa','Dom — Monop\'','15:30 — Acqua e provviste',12);
+addPin('orly',48.7262,2.3652,'#a78bfa','Dom — Orly','12:10 — Atterraggio',14);
+addPin('monop',48.872828,2.3433914,'#a78bfa','Dom — Monop\'','13:45 — Acqua e provviste',12);
 addPin('opera_ext',48.8719697,2.3316014,'#a78bfa','Dom — Opéra (esterno)','18:00 — Passeggiata serale',14);
 addPin('bonbock',48.882807,2.3419587,'#a78bfa','Dom — Le Bon Bock','19:30 — Prima cena parigina!');
 addPin('eiffel',48.858370,2.2944813,'#53d769','Lun — Tour Eiffel','9:30 — Ascensore, prenotare!');
