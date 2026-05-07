@@ -84,6 +84,15 @@
   </div>
   <div class="closures-box"><b>Chiusure incastrate:</b> Le Bon Bock → dom sera · Orangerie → lun (evitato mar chiusura) · Le Petit Célestin → mer (chiuso lun-mar)</div>
 
+  <!-- UTILITY: MONBLEU -->
+  <div style="margin:8px 18px 4px;padding:11px 13px;background:rgba(240,165,0,0.06);border:1px solid rgba(240,165,0,0.15);border-radius:10px;cursor:pointer" onclick="flyTo(48.8740931,2.3420946,17,'monbleu')">
+    <div style="font-size:10.5px;font-weight:700;color:#f0a500;letter-spacing:0.4px;margin-bottom:3px">🧀 VICINO ALL'HOTEL — PRANZO O CENA VELOCE</div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:3px">MONBLEU Faubourg Montmartre</div>
+    <div style="font-size:11.5px;color:var(--muted);line-height:1.5">37 Rue du Faubourg Montmartre — 3 min dall'hotel. Fromagerie + ristorante: raclette, taglieri di formaggi, mont d'or au four, cheeseburger con raclette. Rating 4.5 ⭐ Prenotate: +33 1 45 89 23 96</div>
+    <div style="font-size:10.5px;color:var(--day1);font-weight:600;margin-top:4px">Aperto tutti i giorni 10-mezzanotte (dom 11-mezzanotte) — utile qualsiasi sera!</div>
+    <div class="maps-link"><a href="https://www.google.com/maps/search/?api=1&query=MONBLEU+Faubourg+Montmartre+Paris" target="_blank" rel="noopener" onclick="event.stopPropagation()">📍 Apri in Google Maps</a></div>
+  </div>
+
   <!-- DOM 5 -->
   <div class="day-section">
     <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--sun)"></span>Dom 5 Luglio — Arrivo da Orly<span class="day-subtitle">atterraggio 12:10</span><span class="chevron">▼</span></div>
@@ -115,8 +124,8 @@
       <div class="stop-card" style="border-left-color:var(--day1)" onclick="flyTo(48.852968,2.3499021,17,'notredame')"><div class="time" style="color:var(--day1)">15:00</div><div class="name">Notre-Dame de Paris</div><div class="detail">GRATUITO! Riaperta dopo il restauro. Vetrate, rosoni, navata gotica luminosissima.</div></div>
       <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info"><span class="lb m4">M4</span> <b>Cité</b> → Châtelet · Cambio <span class="lb m1">M1</span> dir. La Défense → <b>Charles de Gaulle-Étoile</b> · Uscita Champs-Élysées · ~20 min</div></div>
       <div class="stop-card" style="border-left-color:var(--day1)" onclick="flyTo(48.8737917,2.2950275,16,'arc')"><div class="time" style="color:var(--day1)">16:30</div><div class="name">Arc de Triomphe & Champs-Élysées</div><div class="detail">Vista dall'esterno (284 gradini, no ascensore per salire). Passeggiata Champs-Élysées in discesa.</div></div>
+      <div class="stop-card" style="border-left-color:var(--day1);background:rgba(255,255,255,0.02);border-style:dashed" onclick="flyTo(48.870452,2.3062966,16,'foodcourt')"><div class="time" style="color:var(--muted)">FACOLTATIVO</div><div class="name">Food Court Galeries Lafayette Champs-Élysées</div><div class="detail">60 Av. des Champs-Élysées, 1° piano. Varie cucine, vista sugli Champs-Élysées. Comodo se avete fame dopo l'Orangerie o dopo l'Arc de Triomphe — siete già lì!</div><span class="ok">Aperto tutti i giorni 10-21</span></div>
       <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Rientro: <span class="lb m1">M1</span> <b>Franklin-Roosevelt</b> → Châtelet · Cambio <span class="lb m7">M7</span> → <b>Cadet</b> · ~20 min · Oppure taxi ~€12-15</div></div>
-      <div class="stop-card" style="border-left-color:var(--day1);background:rgba(255,255,255,0.02);border-style:dashed" onclick="flyTo(48.8771673,2.3389619,17,'sabicherie')"><div class="time" style="color:var(--muted)">FACOLTATIVO — SERA</div><div class="name">La Sabicherie (pita israeliana)</div><div class="detail">6 Rue Notre Dame de Lorette — 4 min dall'hotel. Pita sabich buonissime, rating 4.9! Piccolo locale da asporto.</div><span class="warn">⚠ ATTENZIONE: lunedì aperto solo 11:30-15:30! Se volete provarla, andate a pranzo un altro giorno.</span></div>
     </div>
   </div>
 
@@ -159,10 +168,11 @@
   <div class="day-section">
     <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--thu)"></span>Gio 9 Luglio — Partenza<span class="day-subtitle">Frecciarossa 15:25</span><span class="chevron">▼</span></div>
     <div class="stops-container">
-      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Dall'hotel (con bagagli): <span class="lb m7">M7</span> <b>Cadet</b> → Châtelet · Cambio <span class="lb m1">M1</span> dir. Vincennes → <b>Saint-Paul</b> · ~15 min · Lasciate i bagagli in consigne alla Gare de Lyon prima (~€10)</div></div>
-      <div class="stop-card" style="border-left-color:var(--thu)" onclick="flyTo(48.8556,2.3614,16,'marais')"><div class="time" style="color:var(--thu)">10:00</div><div class="name">Mattinata nel Marais</div><div class="detail">Place des Vosges, Rue des Rosiers (falafel da L'As du Fallafel!), boutique vintage.</div></div>
-      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info"><span class="lb m1">M1</span> <b>Saint-Paul</b> → <b>Gare de Lyon</b> (3 fermate, 7 min) · Uscita Gare SNCF Grandes Lignes</div></div>
-      <div class="stop-card" style="border-left-color:var(--thu)" onclick="flyTo(48.8443,2.3733,16,'gare')"><div class="time" style="color:var(--thu)">13:00</div><div class="name">Pranzo al Le Train Bleu</div><div class="detail">Ristorante storico Belle Époque dentro la stazione! Soffitti affrescati, cucina francese. Prenotate su letrainbleu.com.</div></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Dall'hotel (con bagagli): <span class="lb m7">M7</span> <b>Cadet</b> → Châtelet · Cambio <span class="lb m1">M1</span> dir. Vincennes → <b>Saint-Paul</b> · ~15 min</div></div>
+      <div class="stop-card" style="border-left-color:var(--thu)" onclick="flyTo(48.8556,2.3614,16,'marais')"><div class="time" style="color:var(--thu)">10:00</div><div class="name">Mattinata nel Marais</div><div class="detail">Place des Vosges, Rue des Rosiers (falafel da L'As du Fallafel!), boutique vintage. Lasciate i bagagli in consigne a Gare de Lyon prima (~€10) o alla reception del ristorante.</div></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">5 min a piedi su <b>Rue de Rivoli</b> → Rue Saint-Martin</div></div>
+      <div class="stop-card" style="border-left-color:var(--thu)" onclick="flyTo(48.8584202,2.3500687,17,'benoit')"><div class="time" style="color:var(--thu)">12:00</div><div class="name">Benoit Paris (pranzo d'addio!)</div><div class="detail">Bistrot storico 1912, stella Michelin, cucina di Alain Ducasse. 20 Rue Saint-Martin, 75004. Prenotazione confermata per 3! Provate il cassoulet e il pâté en croûte.</div><span class="ok">✓ PRENOTATO — 12:00 per 3 persone</span></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info"><span class="lb" style="background:#67328E;color:#fff">M14</span> <b>Châtelet</b> → <b>Gare de Lyon</b> (1 fermata, 3 min!) · Oppure <span class="lb m1">M1</span> Saint-Paul → Gare de Lyon (3 fermate) · Arrivate entro le 14:30</div></div>
       <div class="transit"><div class="transit-icon" style="background:rgba(233,69,96,0.15);color:var(--accent);width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;z-index:1;font-weight:700">🚄</div><div class="transit-info">Presentatevi al binario <b>~30 min prima</b> della partenza. Gare de Lyon, Hall 1-2 (Grandes Lignes)</div></div>
       <div class="stop-card" style="border-left-color:var(--accent);background:rgba(233,69,96,0.06)" onclick="flyTo(48.8443,2.3733,16,'gare')"><div class="time" style="color:var(--accent)">15:25</div><div class="name">🚄 Frecciarossa 9287 → Milano Centrale</div><div class="detail">Paris-Gare-de-Lyon 15:25 → Milano Centrale 22:07 · Durata: 6h42 · Buon viaggio!</div></div>
     </div>
@@ -176,6 +186,8 @@
     <a href="https://visites.operadeparis.fr" target="_blank">4. Opéra Garnier → operadeparis.fr</a>
     <a href="https://resa.notredamedeparis.fr" target="_blank">5. Notre-Dame (gratis) → notredamedeparis.fr</a>
     <a href="tel:+33142722081" target="_blank">6. Le Petit Célestin → +33 1 42 72 20 81 (prenotare tavolo!)</a>
+    <a style="color:var(--day1)">7. Benoit Paris → ✓ GIÀ PRENOTATO (9/7, ore 12, 3 persone)</a>
+    <a href="tel:+33145892396" target="_blank">8. MONBLEU → +33 1 45 89 23 96 (consigliato prenotare)</a>
   </div>
 </div>
 
@@ -206,7 +218,6 @@ addPin('orangerie',48.8637884,2.3226724,'#53d769','Lun — Orangerie','12:00 —
 addPin('adameve',48.8607923,2.3454785,'#53d769','Lun — Adam Et Eve','13:30 — Pranzo vegetariano');
 addPin('notredame',48.852968,2.3499021,'#53d769','Lun — Notre-Dame','15:00 — Ingresso GRATUITO');
 addPin('arc',48.8737917,2.2950275,'#53d769','Lun — Arc de Triomphe','16:30 — Esterno + Champs-Élysées');
-addPin('sabicherie',48.8771673,2.3389619,'#53d769','Lun — La Sabicherie','FACOLTATIVO — Pita israeliana<br>⚠ Solo pranzo lun (11:30-15:30)',12);
 addPin('opera',48.8719697,2.3316014,'#e94560','Mar — Opéra Garnier','10:00 — Tour €15, audioguida IT');
 addPin('galeries',48.873622,2.3321099,'#e94560','Mar — Galeries Lafayette','11:45 — Terrazza GRATIS');
 addPin('creperie',48.8859032,2.3340808,'#e94560','Mar — La Crêperie mon ami','FACOLTATIVO 13:30 — Crêpes! Cash only',12);
@@ -215,10 +226,13 @@ addPin('tertre',48.88626,2.34073,'#e94560','Mar — Place du Tertre','15:30 — 
 addPin('barabul',48.884562,2.3322182,'#e94560','Mar — Bar à Bulles','18:00 — Rooftop Moulin Rouge');
 addPin('moulin',48.8841232,2.3322519,'#e94560','Mar — Moulin Rouge','19:15 — Foto facciata');
 addPin('cena_mar',48.884,2.333,'#e94560','Mar — Cena Montmartre','19:45 — Alternative a Le Bon Bock',14);
+addPin('monbleu',48.8740931,2.3420946,'#f0a500','🧀 MONBLEU','3 min dall\'hotel · Raclette, taglieri · 10-mezzanotte',14);
 addPin('louvre',48.8606111,2.337644,'#f0a500','Mer — Louvre','9:30 — Gioconda, Nike, Venere');
 addPin('celestin',48.8522192,2.3613873,'#f0a500','Mer — Le Petit Célestin','14:00 — Boeuf bourguignon!');
+addPin('foodcourt',48.870452,2.3062966,'#53d769','Lun — Food Court GL Champs-Élysées','FACOLTATIVO — Varie cucine, 1° piano',12);
 addPin('marais',48.8556,2.3614,'#94a3b8','Gio — Le Marais','10:00 — Place des Vosges, falafel');
-addPin('gare',48.8443,2.3733,'#94a3b8','Gio — Gare de Lyon','13:00 — Pranzo + treno ore 15',18);
+addPin('benoit',48.8584202,2.3500687,'#94a3b8','Gio — Benoit Paris','12:00 — Pranzo prenotato per 3!');
+addPin('gare',48.8443,2.3733,'#94a3b8','Gio — Gare de Lyon','15:25 — Frecciarossa 9287 → Milano',18);
 function isMobile(){return window.innerWidth<=768}
 function flyTo(lat,lng,z,id){
   if(isMobile()) return;
