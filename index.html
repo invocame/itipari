@@ -43,6 +43,7 @@
   .lb{display:inline-block;padding:1px 5px;border-radius:3px;font-size:9.5px;font-weight:700;margin:0 1px;vertical-align:middle}
   .m1{background:#FFCE00;color:#000}.m2{background:#003CA6;color:#fff}.m4{background:#C04191;color:#fff}
   .m7{background:#F59EB5;color:#000}.m8{background:#C9A0DC;color:#000}.m9{background:#D5C900;color:#000}
+  .m6{background:#6ECA97;color:#000}
   .m12{background:#007852;color:#fff}
   #map{flex:1;height:100vh}
   .leaflet-popup-content-wrapper{border-radius:10px!important;box-shadow:0 8px 30px rgba(0,0,0,0.3)!important}
@@ -112,32 +113,32 @@
 
   <!-- LUN 6 -->
   <div class="day-section">
-    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--day1)"></span>Lun 6 Luglio — Orangerie, Notre-Dame & Tour Eiffel by night<span class="day-subtitle">giornata piena</span><span class="chevron">▼</span></div>
+    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--day1)"></span>Lun 6 Luglio — Notre-Dame, Orangerie, Opéra & Tour Eiffel by night<span class="day-subtitle">giornata piena</span><span class="chevron">▼</span></div>
     <div class="stops-container">
       <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Dall'hotel: <span class="lb m7">M7</span> <b>Cadet</b> → Châtelet · Cambio <span class="lb m4">M4</span> dir. Montrouge → <b>Cité</b> · Uscita Parvis Notre-Dame · ~18 min</div></div>
       <div class="stop-card" style="border-left-color:var(--day1)" onclick="flyTo(48.852968,2.3499021,17,'notredame')"><div class="time" style="color:var(--day1)">9:30</div><div class="name">Notre-Dame de Paris</div><div class="detail">GRATUITO! Riaperta dopo il restauro. Vetrate, rosoni, navata gotica luminosissima. La mattina c'è meno coda.</div></div>
       <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info"><span class="lb m4">M4</span> <b>Cité</b> → Châtelet · Cambio <span class="lb m1">M1</span> dir. La Défense → <b>Concorde</b> · 3 min a piedi nel Jardin des Tuileries · ~18 min</div></div>
       <div class="stop-card" style="border-left-color:var(--day1)" onclick="flyTo(48.8637884,2.3226724,17,'orangerie')"><div class="time" style="color:var(--day1)">12:00</div><div class="name">Musée de l'Orangerie</div><div class="detail">Ninfee di Monet nelle sale ovali! Picasso, Renoir, Modigliani al piano sotto. €12.50 + audio €5. ~1h15 di visita.</div><span class="ok">✓ PRENOTATO — ore 12:00</span></div>
-      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">10 min a piedi attraverso i Tuileries e su <b>Rue Saint-Honoré</b></div></div>
-      <div class="stop-card" style="border-left-color:var(--day1)" onclick="flyTo(48.8607923,2.3454785,17,'adameve')"><div class="time" style="color:var(--day1)">13:30</div><div class="name">Adam Et Eve Café (pranzo vegetariano)</div><div class="detail">Ottimo ristorante vegetariano! Tofu balls, bibimbap, insalate spettacolari. 41 Rue Saint-Honoré. Pranzo fino alle 16.</div></div>
-      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info"><span class="lb m7">M7</span> <b>Palais Royal</b> → Opéra · Cambio <span class="lb m1">M1</span> dir. La Défense → <b>Charles de Gaulle-Étoile</b> · Uscita Champs-Élysées · ~15 min</div></div>
-      <div class="stop-card" style="border-left-color:var(--day1)" onclick="flyTo(48.8737917,2.2950275,16,'arc')"><div class="time" style="color:var(--day1)">15:00</div><div class="name">Arc de Triomphe & Champs-Élysées</div><div class="detail">Vista dall'esterno (284 gradini, no ascensore per salire). Passeggiata Champs-Élysées in discesa.</div></div>
-      <div class="stop-card" style="border-left-color:var(--day1);background:rgba(255,255,255,0.02);border-style:dashed" onclick="flyTo(48.870452,2.3062966,16,'foodcourt')"><div class="time" style="color:var(--muted)">FACOLTATIVO</div><div class="name">Food Court Galeries Lafayette Champs-Élysées</div><div class="detail">60 Av. des Champs-Élysées, 1° piano. Varie cucine, vista sugli Champs-Élysées. Comodo se avete fame!</div><span class="ok">Aperto tutti i giorni 10-21</span></div>
-      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Rientro: <span class="lb m1">M1</span> <b>Franklin-Roosevelt</b> → Châtelet · Cambio <span class="lb m7">M7</span> → <b>Cadet</b> · ~20 min · Pausa e riposo in hotel!</div></div>
-      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Sera: <span class="lb m7">M7</span> <b>Cadet</b> → Opéra · Cambio <span class="lb m8">M8</span> dir. Balard → <b>École Militaire</b> · Uscita Av. de la Bourdonnais · Partite alle 21:15 · ~20 min</div></div>
-      <div class="stop-card" style="border-left-color:var(--day1);background:rgba(83,215,105,0.06)" onclick="flyTo(48.858370,2.2944813,16,'eiffel')"><div class="time" style="color:var(--day1)">22:00</div><div class="name">✨ Tour Eiffel by night</div><div class="detail">La Torre illuminata è spettacolare! Scintillio delle luci ogni ora per 5 minuti. Vista su Parigi di notte dall'alto — indimenticabile. Tutto in ascensore.</div><span class="ok">✓ BIGLIETTI PRENOTATI — ore 22:00</span></div>
-      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Rientro: <span class="lb m8">M8</span> <b>École Militaire</b> → Opéra · Cambio <span class="lb m7">M7</span> → <b>Cadet</b> · ~20 min · Ultimo metro ~00:40</div></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Rientro: <span class="lb m8">M8</span> <b>Concorde</b> dir. Créteil → <b>Grands Boulevards</b> (5 fermate, diretto!) · 3 min a piedi → hotel · ~15 min</div></div>
+      <div class="stop-card" style="border-left-color:var(--day1);background:rgba(192,132,252,0.06)" onclick="flyTo(48.8732561,2.3437067,16,'hotel')"><div class="time" style="color:var(--day1)">13:30</div><div class="name">Pranzo & riposo in hotel</div><div class="detail">Pranzo leggero (Monop' o MONBLEU vicino) e pausa pomeridiana. Ricaricate le energie per la lunga serata!</div></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">8 min a piedi su <b>Rue de la Victoire</b> → Place de l'Opéra</div></div>
+      <div class="stop-card" style="border-left-color:var(--day1)" onclick="flyTo(48.8719697,2.3316014,17,'opera')"><div class="time" style="color:var(--day1)">15:00</div><div class="name">Opéra Garnier (visita interna)</div><div class="detail">Self-guided ~€15. Audioguida italiano gratis su app. Scalone monumentale, Grand Foyer dorato, soffitto di Chagall.</div><span class="ok">✓ PRENOTATO — ore 15:00</span></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">8 min a piedi → rientro in hotel per un'altra pausa, oppure caffè in zona. Riposate prima della serata!</div></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Verso le 18:15: <span class="lb m7">M7</span> <b>Cadet</b> → Palais Royal · Cambio <span class="lb m1">M1</span> dir. La Défense → <b>Charles de Gaulle-Étoile</b> · Uscita Champs-Élysées · ~20 min</div></div>
+      <div class="stop-card" style="border-left-color:var(--day1)" onclick="flyTo(48.8737917,2.2950275,16,'arc')"><div class="time" style="color:var(--day1)">19:00</div><div class="name">Arc de Triomphe & Champs-Élysées</div><div class="detail">Arco illuminato al tramonto, Fiamma del Milite Ignoto. Passeggiata sugli Champs-Élysées in discesa. Vista dall'esterno (284 gradini se volete salire).</div></div>
+      <div class="stop-card" style="border-left-color:var(--day1);background:rgba(255,255,255,0.02);border-style:dashed" onclick="flyTo(48.870452,2.3062966,16,'foodcourt')"><div class="time" style="color:var(--muted)">~20:00 — CENA</div><div class="name">Food Court Galeries Lafayette Champs-Élysées</div><div class="detail">60 Av. des Champs-Élysées, 1° piano. Varie cucine, comodo per cena prima della Torre. Aperto fino alle 21. Oppure uno dei tanti bistrot della zona.</div></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Verso le 21:15: <span class="lb m6">M6</span> <b>Charles de Gaulle-Étoile</b> dir. Nation → <b>Trocadéro</b> (2 fermate) · Fermatevi alla terrazza del <b>Trocadéro</b> per LA vista cartolina sulla Torre illuminata! · Poi 12 min a piedi attraverso il ponte → Tour Eiffel</div></div>
+      <div class="stop-card" style="border-left-color:var(--day1);background:rgba(83,215,105,0.06)" onclick="flyTo(48.858370,2.2944813,16,'eiffel')"><div class="time" style="color:var(--day1)">22:00</div><div class="name">✨ Tour Eiffel by night</div><div class="detail">La Torre illuminata è spettacolare! Scintillio delle luci ogni ora in punto per 5 minuti. Salite verso le 22:30-22:45 per beccare lo scintillio delle 23:00 dall'alto. Portate una felpa, di notte c'è vento. Tutto in ascensore.</div><span class="ok">✓ BIGLIETTI PRENOTATI — ore 22:00</span></div>
+      <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Rientro: <span class="lb m8">M8</span> <b>École Militaire</b> → Opéra · Cambio <span class="lb m7">M7</span> → <b>Cadet</b> · ~20 min · Ultimo metro ~00:40 · Oppure taxi</div></div>
     </div>
   </div>
 
   <!-- MAR 7 -->
   <div class="day-section">
-    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--day2)"></span>Mar 7 Luglio — Opéra & Montmartre<span class="day-subtitle">giornata piena</span><span class="chevron">▼</span></div>
+    <div class="day-title" onclick="toggleDay(this)"><span class="day-dot" style="background:var(--day2)"></span>Mar 7 Luglio — Galeries Lafayette & Montmartre<span class="day-subtitle">giornata piena</span><span class="chevron">▼</span></div>
     <div class="stops-container">
-      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">Dall'hotel: 8 min a piedi su <b>Rue de la Victoire</b> → Place de l'Opéra</div></div>
-      <div class="stop-card" style="border-left-color:var(--day2)" onclick="flyTo(48.8719697,2.3316014,17,'opera')"><div class="time" style="color:var(--day2)">10:00</div><div class="name">Opéra Garnier (visita interna)</div><div class="detail">Self-guided ~€15. Audioguida italiano gratis su app. Scalone, Chagall, Grand Foyer.</div></div>
-      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">5 min a piedi su <b>Boulevard Haussmann</b> verso est</div></div>
-      <div class="stop-card" style="border-left-color:var(--day2)" onclick="flyTo(48.873622,2.3321099,17,'galeries')"><div class="time" style="color:var(--day2)">11:45</div><div class="name">Galeries Lafayette (terrazza)</div><div class="detail">Terrazza GRATUITA, ascensore fino in cima. Cupola Art Nouveau. Pranzo qui.</div></div>
+      <div class="transit"><div class="transit-icon walk">🚶</div><div class="transit-info">Dall'hotel: 10 min a piedi su <b>Rue de la Victoire</b> → Boulevard Haussmann. Mattinata con calma, niente fretta!</div></div>
+      <div class="stop-card" style="border-left-color:var(--day2)" onclick="flyTo(48.873622,2.3321099,17,'galeries')"><div class="time" style="color:var(--day2)">10:30</div><div class="name">Galeries Lafayette (terrazza)</div><div class="detail">Terrazza panoramica GRATUITA, ascensore fino in cima — vista su tutta Parigi e sull'Opéra dall'alto. Cupola Art Nouveau spettacolare all'interno. Pranzo qui.</div></div>
       <div class="transit"><div class="transit-icon metro">M</div><div class="transit-info">Pausa in hotel, poi: <span class="lb m7">M7</span> <b>Cadet</b> → Opéra · Cambio <span class="lb m2">M2</span> dir. Porte Dauphine → <b>Anvers</b> · Uscita Sacré-Cœur · Poi <b>funicolare</b> (biglietto metro) · ~15 min</div></div>
       <div class="stop-card" style="border-left-color:var(--day2);background:rgba(255,255,255,0.02);border-style:dashed" onclick="flyTo(48.8859032,2.3340808,17,'creperie')"><div class="time" style="color:var(--muted)">FACOLTATIVO — 13:30</div><div class="name">La Crêperie mon ami (pranzo veloce)</div><div class="detail">7 Rue Joseph de Maistre, vicino a Place de Clichy/Abbesses. Crêpes e galettes fatte al momento, tiny hole-in-the-wall. Top su Nutella e Speculoos! Solo contanti!</div><span class="ok">Aperta tutti i giorni 11-23</span></div>
       <div class="stop-card" style="border-left-color:var(--day2)" onclick="flyTo(48.886705,2.3431043,17,'sacrecoeur')"><div class="time" style="color:var(--day2)">14:30</div><div class="name">Sacré-Cœur</div><div class="detail">FUNICOLARE per salire. Basilica gratuita, panorama dal sagrato.</div></div>
@@ -184,7 +185,7 @@
     <a style="color:var(--day1)">1. Tour Eiffel → ✓ GIÀ PRENOTATO (6/7, ore 22:00)</a>
     <a style="color:var(--day1)">2. Louvre → ✓ GIÀ PRENOTATO (8/7, ore 9:30)</a>
     <a style="color:var(--day1)">3. Orangerie → ✓ GIÀ PRENOTATO (6/7, ore 12:00)</a>
-    <a href="https://visites.operadeparis.fr" target="_blank">4. Opéra Garnier → operadeparis.fr</a>
+    <a style="color:var(--day1)">4. Opéra Garnier → ✓ GIÀ PRENOTATO (6/7, ore 15:00)</a>
     <a href="https://resa.notredamedeparis.fr" target="_blank">5. Notre-Dame (gratis) → notredamedeparis.fr</a>
     <a style="color:var(--day1)">6. Le Petit Célestin → ✓ GIÀ PRENOTATO (8/7, ore 14:00)</a>
     <a style="color:var(--day1)">7. Benoit Paris → ✓ GIÀ PRENOTATO (9/7, ore 12, 3 persone)</a>
@@ -196,8 +197,8 @@
 <div class="legend">
   <div class="legend-item"><div class="legend-dot" style="background:var(--hotel)"></div> Hotel Acadia</div>
   <div class="legend-item"><div class="legend-dot" style="background:var(--sun)"></div> Dom 5 — Orly/Arrivo</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--day1)"></div> Lun 6 — Orangerie/Eiffel by night</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--day2)"></div> Mar 7 — Opéra/Montmartre</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--day1)"></div> Lun 6 — Notre-Dame/Opéra/Eiffel</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--day2)"></div> Mar 7 — Galeries/Montmartre</div>
   <div class="legend-item"><div class="legend-dot" style="background:var(--day3)"></div> Mer 8 — Louvre/Célestin</div>
   <div class="legend-item"><div class="legend-dot" style="background:var(--thu)"></div> Gio 9 — Partenza</div>
 </div>
@@ -215,12 +216,12 @@ addPin('monop',48.872828,2.3433914,'#a78bfa','Dom — Monop\'','13:30 — Acqua 
 addPin('opera_ext',48.8719697,2.3316014,'#a78bfa','Dom — Opéra (esterno)','18:00 — Passeggiata serale',14);
 addPin('bonbock',48.882807,2.3419587,'#a78bfa','Dom — Le Bon Bock','19:30 — Prima cena parigina!');
 addPin('eiffel',48.858370,2.2944813,'#53d769','Lun — Tour Eiffel by night','22:00 — Biglietti prenotati!');
+addPin('notredame',48.852968,2.3499021,'#53d769','Lun — Notre-Dame','9:30 — Ingresso GRATUITO');
 addPin('orangerie',48.8637884,2.3226724,'#53d769','Lun — Orangerie','12:00 — Ninfee di Monet — PRENOTATO');
-addPin('adameve',48.8607923,2.3454785,'#53d769','Lun — Adam Et Eve','13:30 — Pranzo vegetariano');
-addPin('notredame',48.852968,2.3499021,'#53d769','Lun — Notre-Dame','15:00 — Ingresso GRATUITO');
-addPin('arc',48.8737917,2.2950275,'#53d769','Lun — Arc de Triomphe','16:30 — Esterno + Champs-Élysées');
-addPin('opera',48.8719697,2.3316014,'#e94560','Mar — Opéra Garnier','10:00 — Tour €15, audioguida IT');
-addPin('galeries',48.873622,2.3321099,'#e94560','Mar — Galeries Lafayette','11:45 — Terrazza GRATIS');
+addPin('opera',48.8719697,2.3316014,'#53d769','Lun — Opéra Garnier','15:00 — Visita interna — PRENOTATO');
+addPin('arc',48.8737917,2.2950275,'#53d769','Lun — Arc de Triomphe','19:00 — Esterno + Champs-Élysées');
+addPin('foodcourt',48.870452,2.3062966,'#53d769','Lun — Food Court GL Champs-Élysées','~20:00 cena prima della Torre',12);
+addPin('galeries',48.873622,2.3321099,'#e94560','Mar — Galeries Lafayette','10:30 — Terrazza GRATIS');
 addPin('creperie',48.8859032,2.3340808,'#e94560','Mar — La Crêperie mon ami','FACOLTATIVO 13:30 — Crêpes! Cash only',12);
 addPin('sacrecoeur',48.886705,2.3431043,'#e94560','Mar — Sacré-Cœur','14:30 — Funicolare + basilica');
 addPin('tertre',48.88626,2.34073,'#e94560','Mar — Place du Tertre','15:30 — Pittori, passeggiata');
@@ -230,7 +231,6 @@ addPin('cena_mar',48.884,2.333,'#e94560','Mar — Cena Montmartre','19:45 — Al
 addPin('monbleu',48.8740931,2.3420946,'#f0a500','🧀 MONBLEU','3 min dall\'hotel · Raclette, taglieri · 10-mezzanotte',14);
 addPin('louvre',48.8606111,2.337644,'#f0a500','Mer — Louvre','9:30 — Gioconda, Nike, Venere');
 addPin('celestin',48.8522192,2.3613873,'#f0a500','Mer — Le Petit Célestin','14:00 — Boeuf bourguignon!');
-addPin('foodcourt',48.870452,2.3062966,'#53d769','Lun — Food Court GL Champs-Élysées','FACOLTATIVO — Varie cucine, 1° piano',12);
 addPin('marais',48.8556,2.3614,'#94a3b8','Gio — Le Marais','10:00 — Place des Vosges, falafel');
 addPin('benoit',48.8584202,2.3500687,'#94a3b8','Gio — Benoit Paris','12:00 — Pranzo prenotato per 3!');
 addPin('gare',48.8443,2.3733,'#94a3b8','Gio — Gare de Lyon','15:25 — Frecciarossa 9287 → Milano',18);
